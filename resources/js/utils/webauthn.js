@@ -56,13 +56,14 @@ function getDeviceName() {
     return 'Perangkat Ini';
 }
 
+function csrfToken() {
+    return document.querySelector('meta[name="csrf-token"]')?.content || '';
+}
+
 export async function getRegisterChallenge(email) {
     const res = await fetch('/webauthn/challenge', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
-        },
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken() },
         body: JSON.stringify({ email }),
     });
     if (!res.ok) {
@@ -82,11 +83,6 @@ export async function registerBiometric(email) {
         id: base64ToArrayBuffer(c.id),
     }));
 
-    options.authenticatorSelection = {
-        residentKey: 'preferred',
-        userVerification: 'required',
-    };
-
     const cred = await navigator.credentials.create({ publicKey: options });
 
     const credential = {
@@ -97,10 +93,7 @@ export async function registerBiometric(email) {
 
     const res = await fetch('/webauthn/register', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
-        },
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken() },
         body: JSON.stringify(credential),
     });
 
@@ -115,10 +108,7 @@ export async function registerBiometric(email) {
 export async function loginBiometric() {
     const res = await fetch('/webauthn/challenge', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
-        },
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken() },
     });
     if (!res.ok) {
         const err = await res.json();
@@ -126,14 +116,20 @@ export async function loginBiometric() {
     }
     const options = await res.json();
 
-    const assertion = await navigator.credentials.get({
-        publicKey: {
-            challenge: base64ToArrayBuffer(options.challenge),
-            timeout: options.timeout ?? 60000,
-            rpId: options.rp?.id || window.location.hostname,
-            userVerification: 'required',
-        },
-    });
+    var getOptions = {
+        challenge: base64ToArrayBuffer(options.challenge),
+        timeout: options.timeout ?? 60000,
+        rpId: options.rp?.id || window.location.hostname,
+    };
+
+    if (options.allowCredentials && options.allowCredentials.length > 0) {
+        getOptions.allowCredentials = options.allowCredentials.map(c => ({
+            id: base64ToArrayBuffer(c.id),
+            type: c.type,
+        }));
+    }
+
+    const assertion = await navigator.credentials.get({ publicKey: getOptions });
 
     const credential = {
         credential_id: arrayBufferToBase64Url(assertion.rawId),
@@ -144,10 +140,7 @@ export async function loginBiometric() {
 
     const authRes = await fetch('/webauthn/authenticate', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
-        },
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken() },
         body: JSON.stringify(credential),
     });
 
@@ -190,10 +183,7 @@ export async function authenticateBiometric(email) {
 
     const res = await fetch('/webauthn/authenticate', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
-        },
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken() },
         body: JSON.stringify(credential),
     });
 

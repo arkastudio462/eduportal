@@ -52,6 +52,14 @@ class WebAuthnController extends Controller
                 'name' => $user->email,
                 'displayName' => $user->name,
             ];
+        } else {
+            $allCredentials = WebAuthnCredential::all();
+            if ($allCredentials->isNotEmpty()) {
+                $response['allowCredentials'] = $allCredentials->map(fn ($c) => [
+                    'id' => $c->credential_id,
+                    'type' => 'public-key',
+                ])->toArray();
+            }
         }
 
         return response()->json($response);
