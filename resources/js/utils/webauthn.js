@@ -84,7 +84,7 @@ export async function registerBiometric(email) {
 
     options.authenticatorSelection = {
         residentKey: 'preferred',
-        authenticatorAttachment: 'platform',
+        userVerification: 'required',
     };
 
     const cred = await navigator.credentials.create({ publicKey: options });
@@ -131,6 +131,7 @@ export async function loginBiometric() {
             challenge: base64ToArrayBuffer(options.challenge),
             timeout: options.timeout ?? 60000,
             rpId: options.rp?.id || window.location.hostname,
+            userVerification: 'required',
         },
     });
 
