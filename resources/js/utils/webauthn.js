@@ -93,9 +93,13 @@ export async function loginBiometric() {
     }
     const options = await res.json();
 
-    options.challenge = base64ToArrayBuffer(options.challenge);
-
-    const assertion = await navigator.credentials.get({ publicKey: options });
+    const assertion = await navigator.credentials.get({
+        publicKey: {
+            challenge: base64ToArrayBuffer(options.challenge),
+            timeout: options.timeout ?? 60000,
+            rpId: options.rp?.id || window.location.hostname,
+        },
+    });
 
     const credential = {
         credential_id: arrayBufferToBase64Url(assertion.rawId),
