@@ -125,6 +125,9 @@
                     </button>
                 </div>
             </div>
+
+            {{-- Biometric Settings --}}
+            @include('profile.partials.biometric-settings')
         </div>
 
     </div>

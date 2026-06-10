@@ -58,6 +58,9 @@
                 </div>
             </form>
         </div>
+
+        {{-- Biometric Settings --}}
+        @include('profile.partials.biometric-settings')
     </div>
 
     {{-- Sidebar --}}
