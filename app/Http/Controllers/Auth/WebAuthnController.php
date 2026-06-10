@@ -113,8 +113,8 @@ class WebAuthnController extends Controller
 
             Session::forget(['webauthn_challenge', 'webauthn_email']);
 
-            $role = $user->role;
-            $redirect = match ((string) $role) {
+            $role = $user->role->value;
+            $redirect = match ($role) {
                 'admin' => route('admin.dashboard', absolute: false),
                 'guru' => route('portal-guru.dashboard', absolute: false),
                 'siswa' => route('portal-siswa.dashboard', absolute: false),
