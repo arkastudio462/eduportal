@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profil SMA Nusantara - Keunggulan Akademik &amp; Karakter</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Three:wght@400;600;700&amp;family=Work+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#45464f",
+                    "surface-bright": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "primary-fixed-dim": "#b8c4fe",
+                    "on-tertiary-fixed": "#341000",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary": "#120300",
+                    "surface-container": "#edeeef",
+                    "tertiary-container": "#3a1300",
+                    "inverse-primary": "#b8c4fe",
+                    "tertiary-fixed-dim": "#ffb693",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e1e3e4",
+                    "secondary": "#835500",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#dde1ff",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary": "#ffffff",
+                    "primary": "#000421",
+                    "on-secondary-container": "#6b4500",
+                    "on-primary-fixed": "#081747",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#7884ba",
+                    "background": "#f8f9fa",
+                    "outline": "#767680",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffdbcb",
+                    "surface-dim": "#d9dadb",
+                    "inverse-surface": "#2e3132",
+                    "outline-variant": "#c6c5d0",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-secondary-fixed": "#291800",
+                    "on-tertiary-container": "#b77758",
+                    "surface-tint": "#505c8f",
+                    "secondary-container": "#feae2c",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#ffddb4",
+                    "on-primary-fixed-variant": "#384475",
+                    "error": "#ba1a1a",
+                    "surface": "#f8f9fa",
+                    "secondary-fixed-dim": "#ffb955",
+                    "on-secondary-fixed-variant": "#633f00",
+                    "on-tertiary-fixed-variant": "#6c391f",
+                    "primary-container": "#0d1b4b",
+                    "on-surface": "#191c1d",
+                    "surface-container-low": "#f3f4f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width": "1280px",
+                    "margin-desktop": "32px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Source Sans Three"],
+                    "headline-lg": ["Work Sans"],
+                    "headline-xl": ["Work Sans"],
+                    "body-sm": ["Source Sans Three"],
+                    "headline-sm": ["Work Sans"],
+                    "headline-lg-mobile": ["Work Sans"],
+                    "label-md": ["Source Sans Three"],
+                    "headline-md": ["Work Sans"],
+                    "body-lg": ["Source Sans Three"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-surface border-b border-outline-variant shadow-sm transition-all duration-300">
+<div class="flex justify-between items-center h-16 px-margin-desktop max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">
+                SMA Nusantara
+            </div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200 active:opacity-80" href="#">Beranda</a>
+<a class="font-body-md text-body-md text-secondary font-bold border-b-2 border-secondary transition-colors duration-200 active:opacity-80" href="#">Profil</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200 active:opacity-80" href="#">Akademik</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200 active:opacity-80" href="#">Berita</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200 active:opacity-80" href="#">Kontak</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 rounded-lg bg-primary text-on-primary font-label-md hover:opacity-90 transition-all active:scale-95">Login</button>
+<button class="md:hidden p-2 text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[600px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover brightness-[0.4]" data-alt="A modern school building with sleek glass windows and a grand architectural design, captured during a bright sunny day with deep blue skies. The campus grounds are well-manicured with lush green lawns and contemporary landscaping. The lighting is crisp and high-contrast, emphasizing the sophisticated navy and white color palette of the institution. The mood is inspiring and educational." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnZP2g6rCfqqKPBmHoKagc4Lu5Utv5BOC1FouBe7GItw0aRuGjCGhOXevMHZ6lt678FS2UAaxpEPDdpWuyMCFSDiydiPGT2na-UxMeB3L0yU7ZDyxbigYlbA_kZ7hBGVWDAWZbMXbrvTSFkjPPCJeaq7Fs73LyEZ4LbYPz50HUUa98ScMdqpJ77CGdjHxhfizfBynw5VBcG_4jBUq4CmHSnLQxbnd_jPLbZcTkoUjwhx8thuzV7RhEe7Fwn7j3Re4nnkxyI611aGQ_"/>
+</div>
+<div class="relative z-10 px-margin-desktop max-w-max-width mx-auto w-full text-white">
+<div class="max-w-2xl">
+<h1 class="font-headline-xl text-headline-xl mb-4 leading-tight">Profil SMA Nusantara</h1>
+<p class="font-body-lg text-body-lg text-surface-container-highest max-w-lg mb-8">
+                        Membangun generasi pemimpin masa depan dengan integritas tinggi, wawasan global, dan penguasaan teknologi yang adaptif.
+                    </p>
+<div class="flex gap-4">
+<button class="px-8 py-3 rounded-lg bg-secondary-container text-on-secondary-container font-label-md flex items-center gap-2 hover:bg-secondary-fixed transition-all">
+                            Eksplorasi Kampus <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent"></div>
+</section>
+<!-- Visi & Misi Section -->
+<section class="py-20 px-margin-desktop max-w-max-width mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="relative">
+<div class="absolute -top-6 -left-6 w-24 h-24 bg-secondary-fixed-dim opacity-20 rounded-full blur-2xl"></div>
+<div class="p-10 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5">
+<span class="material-symbols-outlined text-[120px]">visibility</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6 flex items-center gap-3">
+<span class="p-2 bg-primary-container text-on-primary-container rounded-lg material-symbols-outlined">lightbulb</span>
+                            Visi Kami
+                        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant italic leading-relaxed">
+                            "Menjadi lembaga pendidikan terkemuka yang menghasilkan lulusan unggul dalam prestasi, berkarakter mulia, dan berwawasan lingkungan menuju persaingan global."
+                        </p>
+</div>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8">Misi Sekolah</h2>
+<ul class="space-y-6">
+<li class="flex gap-4 group">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold transition-transform group-hover:scale-110">1</div>
+<p class="font-body-md text-body-md text-on-surface-variant pt-2">
+                                Menyelenggarakan proses pembelajaran yang inovatif, kreatif, dan berbasis teknologi informasi.
+                            </p>
+</li>
+<li class="flex gap-4 group">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold transition-transform group-hover:scale-110">2</div>
+<p class="font-body-md text-body-md text-on-surface-variant pt-2">
+                                Menumbuhkembangkan budi pekerti luhur dan nilai-nilai keagamaan dalam seluruh aspek kehidupan sekolah.
+                            </p>
+</li>
+<li class="flex gap-4 group">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold transition-transform group-hover:scale-110">3</div>
+<p class="font-body-md text-body-md text-on-surface-variant pt-2">
+                                Mengembangkan potensi bakat dan minat siswa melalui kegiatan ekstrakurikuler yang beragam.
+                            </p>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Sejarah Sekolah Section (Asymmetric) -->
+<section class="py-20 bg-surface-container-low overflow-hidden">
+<div class="px-margin-desktop max-w-max-width mx-auto">
+<div class="flex flex-col md:flex-row gap-16 items-start">
+<div class="md:w-1/3 sticky top-24">
+<span class="text-secondary font-bold tracking-widest text-label-md">PERJALANAN KAMI</span>
+<h2 class="font-headline-xl text-headline-xl text-primary mt-2 mb-6">Sejarah &amp; Jejak Langkah</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Didirikan di atas mimpi besar untuk mencerdaskan kehidupan bangsa, SMA Nusantara telah bertransformasi dari sebuah gedung sederhana menjadi institusi pendidikan modern yang membanggakan.
+                        </p>
+</div>
+<div class="md:w-2/3 space-y-12 relative border-l-2 border-outline-variant pl-12 ml-6">
+<div class="relative transition-all duration-300 hover:translate-x-2">
+<div class="absolute -left-[58px] top-0 w-4 h-4 rounded-full bg-secondary border-4 border-white"></div>
+<span class="font-headline-sm text-headline-sm text-primary">1995: Fondasi Awal</span>
+<p class="mt-2 font-body-md text-body-md text-on-surface-variant">Berdiri sebagai inisiatif komunitas lokal dengan 3 kelas awal dan semangat pengabdian yang tinggi.</p>
+</div>
+<div class="relative transition-all duration-300 hover:translate-x-2">
+<div class="absolute -left-[58px] top-0 w-4 h-4 rounded-full bg-secondary border-4 border-white"></div>
+<span class="font-headline-sm text-headline-sm text-primary">2008: Transformasi Digital</span>
+<p class="mt-2 font-body-md text-body-md text-on-surface-variant">Mulai mengintegrasikan laboratorium komputer modern dan sistem manajemen sekolah berbasis web.</p>
+</div>
+<div class="relative transition-all duration-300 hover:translate-x-2">
+<div class="absolute -left-[58px] top-0 w-4 h-4 rounded-full bg-secondary border-4 border-white"></div>
+<span class="font-headline-sm text-headline-sm text-primary">2015: Akreditasi A &amp; Ekspansi</span>
+<p class="mt-2 font-body-md text-body-md text-on-surface-variant">Menerima predikat Akreditasi A secara berturut-turut dan membangun sayap gedung olahraga baru.</p>
+</div>
+<div class="relative transition-all duration-300 hover:translate-x-2">
+<div class="absolute -left-[58px] top-0 w-4 h-4 rounded-full bg-secondary border-4 border-white"></div>
+<span class="font-headline-sm text-headline-sm text-primary">2023: Sekolah Berbasis Internasional</span>
+<p class="mt-2 font-body-md text-body-md text-on-surface-variant">Mengadopsi kurikulum hybrid dan bermitra dengan berbagai institusi pendidikan global ternama.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Struktur Organisasi (Placeholder Style) -->
+<section class="py-20 px-margin-desktop max-w-max-width mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary">Struktur Organisasi</h2>
+<div class="w-24 h-1 bg-secondary mx-auto mt-4 rounded-full"></div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-8 shadow-sm flex flex-col items-center">
+<div class="w-full max-w-4xl aspect-[16/9] bg-surface-container-high rounded-lg flex flex-col items-center justify-center text-on-surface-variant overflow-hidden relative group cursor-zoom-in">
+<img class="w-full h-full object-cover opacity-80" data-alt="A professional organizational chart displayed on a large digital screen in a modern conference room. The chart uses a sleek hierarchy of navy blue nodes and white text, showing various levels of administration and faculty. The environment is professional and high-tech, with soft natural light entering through large windows, creating a clean, professional corporate education atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnXIEYTFGCRmOxfPjSnrDvqD5HP20SezHcx5pOkktaNGPSzE3TunzjSk2YWXnVRCTXtdgvemeJIGE20I7gBWR0wswXHELGSacNr81XOrS3-fjs0Vc36nKtA-arVIjjVRJeTceVAGSdFI1bUrxqv6v9VAccs1r7g1ezrTSYKTlErm24IBXfJ43xT6qYcQGQahqg-MtBj_CfHZUCaFwkWGzwD6bLIOEh_wg2rXEnWkMAdefQ2p3QqiabkNA7BX2hfPQ-S2EEIIMQ3jBO"/>
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="px-6 py-3 bg-white text-primary rounded-full font-bold shadow-lg flex items-center gap-2">
+<span class="material-symbols-outlined">zoom_in</span> Lihat Bagan Lengkap
+                        </div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full mt-12 text-center">
+<div class="p-4">
+<div class="w-20 h-20 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-4xl">person</span>
+</div>
+<p class="font-bold text-primary">Drs. H. Ahmad Fauzi</p>
+<p class="text-body-sm text-on-surface-variant">Kepala Sekolah</p>
+</div>
+<div class="p-4">
+<div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-4xl">person</span>
+</div>
+<p class="font-bold text-primary">Siti Aminah, M.Pd</p>
+<p class="text-body-sm text-on-surface-variant">Wakil Akademik</p>
+</div>
+<div class="p-4">
+<div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-4xl">person</span>
+</div>
+<p class="font-bold text-primary">Budi Santoso, S.T</p>
+<p class="text-body-sm text-on-surface-variant">Wakil Sarpras</p>
+</div>
+<div class="p-4">
+<div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-4xl">person</span>
+</div>
+<p class="font-bold text-primary">Maya Lestari, S.Psi</p>
+<p class="text-body-sm text-on-surface-variant">Kesiswaan</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Fasilitas Gallery (Bento Grid Layout) -->
+<section class="py-20 px-margin-desktop max-w-max-width mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-12">Fasilitas Unggulan</h2>
+<div class="bento-grid h-[800px] md:h-[600px]">
+<!-- Item 1: Laboratorium -->
+<div class="col-span-12 md:col-span-8 row-span-1 md:row-span-2 relative rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A futuristic science laboratory with high-end chemical and biological research equipment. Sterile white workstations are accented by cool blue LED lighting. Students in white lab coats are focused on experiments under bright, clinical daylight. The setting is impeccably clean, reflecting a professional and advanced academic environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOdsaIAmktjqLINalHx9v2PBKa017lpfSIWD1r63laToiEVMTr6RTVdAOnHuP9__4FXq0WEWFekMszzxKQLa3OECah93Wpl2Jm8rC6R2htZNFSU72Zl371Pxkgc1dbEMb-v7uMZTIWdLoQ5qkjM3m8nV13fSiPMKVV2u1ahyX7A6otFXuVCCRsWCdTCeUo6VmGICEmlbJb5OrW1RALq1g6jDlETHOYVnDIanvUMpXVGwW-YN_SUiFOMp34hHwUNq6Aq4TWDinpSXKL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
+<span class="text-secondary-fixed text-label-md font-bold uppercase tracking-wider mb-2">Sains &amp; Riset</span>
+<h3 class="text-white font-headline-md text-headline-md">Laboratorium Terpadu</h3>
+<p class="text-surface-variant font-body-md mt-2 max-w-lg">Dilengkapi dengan peralatan penelitian standar internasional untuk Fisika, Kimia, dan Biologi.</p>
+</div>
+</div>
+<!-- Item 2: Perpustakaan -->
+<div class="col-span-12 md:col-span-4 row-span-1 relative rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A vast and quiet school library with floor-to-ceiling wooden bookshelves filled with thousands of books. Modern study pods with soft task lighting and ergonomic chairs are scattered throughout the space. The atmosphere is warm and scholarly, illuminated by soft golden light from tall arched windows. Minimalist design elements create a serene sanctuary for learning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2j5GCf_kpLWdJAA6OQsoJ7g6wXut7pXiutI6YQb06bnRONmivSCqUjlgJvAQBYsLrzmevivIRGkAHV3PSCIX03-g1UyBihyyq3qsi2iLq5sS1SD2TNlPClwnqdWc0NA3T9kXsD1TyYy-BRNinHfyT4CuM6zn2cRYXQLWDS-CUlgfDaTISilk1jgQ_uuR0WOfVNSLh1YdjkURP1ZFf1V1Lwibn3QeAesRPOCwHYkMtWDFf200Psx-sMy3FXT-zH-wBE_0K9ULNRQxx"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+<h3 class="text-white font-headline-sm text-headline-sm">Perpustakaan Digital</h3>
+</div>
+</div>
+<!-- Item 3: Lapangan Olahraga -->
+<div class="col-span-12 md:col-span-4 row-span-1 relative rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A sprawling, high-quality outdoor athletic complex featuring a vibrant green synthetic turf field and a professional-grade running track. The facility is brightly lit by afternoon sun against a clear sky. Modern bleachers and sports equipment signify a well-funded athletic department. The style is clean, energetic, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEJf_la7ljUxmg9PUBqCuYSSShgts_xGmJBSbvzbZAs7O_OP8SgvFwfSCDnJGQOUXEkGrABDXlm_QYvntq6i6KVT0yHq1vGb1I53ONlRPJoxbv4rpJpa08P3SDRFC_KskRDpckBd-eycZJ57Zr7uqNQL4Ee-brDqjpHNZjvax33usAhcpKqAHYxgaCYOBYIWgbT4uHjVrphjVy8QQ5el_wceaqV7pn9eNegLiscT3j7EoOlQqTWcEgqgi2uzK1uVNsZO2eSWBYP8jH"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+<h3 class="text-white font-headline-sm text-headline-sm">Kompleks Olahraga</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Counter Section -->
+<section class="py-16 bg-primary text-on-primary">
+<div class="px-margin-desktop max-w-max-width mx-auto">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+<div>
+<p class="font-headline-xl text-headline-xl text-secondary-fixed mb-1">28+</p>
+<p class="font-label-md text-label-md uppercase tracking-widest opacity-80">Tahun Pengalaman</p>
+</div>
+<div>
+<p class="font-headline-xl text-headline-xl text-secondary-fixed mb-1">1.2k+</p>
+<p class="font-label-md text-label-md uppercase tracking-widest opacity-80">Siswa Aktif</p>
+</div>
+<div>
+<p class="font-headline-xl text-headline-xl text-secondary-fixed mb-1">85+</p>
+<p class="font-label-md text-label-md uppercase tracking-widest opacity-80">Tenaga Pengajar</p>
+</div>
+<div>
+<p class="font-headline-xl text-headline-xl text-secondary-fixed mb-1">98%</p>
+<p class="font-label-md text-label-md uppercase tracking-widest opacity-80">Lulus PTN</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-max-width mx-auto">
+<div class="flex flex-col gap-4">
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary">SMA Nusantara</span>
+<p class="font-body-sm text-body-sm opacity-80">
+                    Mewujudkan insan yang cerdas, berkarakter, dan berdaya saing global sejak 1995.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-md text-label-md font-bold uppercase tracking-wider text-secondary-fixed">Kontak Kami</span>
+<ul class="space-y-2 font-body-sm text-body-sm text-primary-fixed-dim opacity-80">
+<li>Alamat: Jl. Pendidikan No. 123</li>
+<li>Email: info@smanusantara.sch.id</li>
+<li>Telepon: (021) 555-0123</li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-md text-label-md font-bold uppercase tracking-wider text-secondary-fixed">Tautan Cepat</span>
+<ul class="space-y-2 font-body-sm text-body-sm text-primary-fixed-dim">
+<li class="hover:text-secondary-fixed-dim cursor-pointer transition-colors">Pendaftaran</li>
+<li class="hover:text-secondary-fixed-dim cursor-pointer transition-colors">Kalender Akademik</li>
+<li class="hover:text-secondary-fixed-dim cursor-pointer transition-colors">Portal Alumni</li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-md text-label-md font-bold uppercase tracking-wider text-secondary-fixed">Media Sosial</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary-fixed transition-colors">social_leaderboard</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary-fixed transition-colors">camera_enhance</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary-fixed transition-colors">smart_display</span>
+</div>
+</div>
+</div>
+<div class="border-t border-white/10 py-6 text-center font-body-sm text-body-sm text-primary-fixed-dim opacity-60">
+            © 2024 SMA Nusantara. All rights reserved.
+        </div>
+</footer>
+<script>
+        // Simple scroll interaction for Header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-1', 'shadow-lg');
+            } else {
+                header.classList.remove('py-1', 'shadow-lg');
+            }
+        });
+    </script>
+</body></html>

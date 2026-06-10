@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Berita - SMA Nusantara</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=Work+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#45464f",
+                    "surface-bright": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "primary-fixed-dim": "#b8c4fe",
+                    "on-tertiary-fixed": "#341000",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary": "#120300",
+                    "surface-container": "#edeeef",
+                    "tertiary-container": "#3a1300",
+                    "inverse-primary": "#b8c4fe",
+                    "tertiary-fixed-dim": "#ffb693",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e1e3e4",
+                    "secondary": "#835500",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#dde1ff",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary": "#ffffff",
+                    "primary": "#000421",
+                    "on-secondary-container": "#6b4500",
+                    "on-primary-fixed": "#081747",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#7884ba",
+                    "background": "#f8f9fa",
+                    "outline": "#767680",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffdbcb",
+                    "surface-dim": "#d9dadb",
+                    "inverse-surface": "#2e3132",
+                    "outline-variant": "#c6c5d0",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-secondary-fixed": "#291800",
+                    "on-tertiary-container": "#b77758",
+                    "surface-tint": "#505c8f",
+                    "secondary-container": "#feae2c",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#ffddb4",
+                    "on-primary-fixed-variant": "#384475",
+                    "error": "#ba1a1a",
+                    "surface": "#f8f9fa",
+                    "secondary-fixed-dim": "#ffb955",
+                    "on-secondary-fixed-variant": "#633f00",
+                    "on-tertiary-fixed-variant": "#6c391f",
+                    "primary-container": "#0d1b4b",
+                    "on-surface": "#191c1d",
+                    "surface-container-low": "#f3f4f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "12px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width": "1280px",
+                    "margin-desktop": "32px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Source Sans 3"],
+                    "headline-lg": ["Work Sans"],
+                    "headline-xl": ["Work Sans"],
+                    "body-sm": ["Source Sans 3"],
+                    "headline-sm": ["Work Sans"],
+                    "headline-lg-mobile": ["Work Sans"],
+                    "label-md": ["Source Sans 3"],
+                    "headline-md": ["Work Sans"],
+                    "body-lg": ["Source Sans 3"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(100px, auto);
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant shadow-sm z-50">
+<div class="flex justify-between items-center h-16 px-margin-desktop max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">SMA Nusantara</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-body-md text-body-md" href="#">Beranda</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-body-md text-body-md" href="#">Profil</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-body-md text-body-md" href="#">Akademik</a>
+<a class="text-secondary font-bold border-b-2 border-secondary font-body-md text-body-md h-16 flex items-center" href="#">Berita</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-body-md text-body-md" href="#">Kontak</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md active:opacity-80 transition-all">Login</button>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin-desktop py-8 md:py-12">
+<!-- Hero: Berita Terkini -->
+<section class="mb-12">
+<h2 class="font-headline-lg text-headline-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">campaign</span>
+                Berita Terkini
+            </h2>
+<div class="relative group overflow-hidden rounded-xl h-[450px] shadow-lg border border-outline-variant bg-on-surface-variant">
+<img alt="Hero News" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" data-alt="A cinematic, wide-angle shot of a modern glass-and-steel high school building during a golden hour sunset. The architectural design features clean lines and warm wood accents, with students walking through a manicured campus garden. The overall atmosphere is prestigious, academic, and professional, utilizing a primary navy and warm gold color palette to match an institutional brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0AI2gJ4AttWPamJGZ-IRHqJYvoAXmuitUTVLbWKEtJoYZUGhMUVZ7yQixYh0MZLgtA42tKBfCpZJjg7KOtMmf8Q2lMBo7k2WkJIdgHE_LAHUoqqhbFzAVrhRNAjOUNelDOK-1k5vKmsGj8DK50LYIvUWg3Li1_3J2Q5ran9yCFRvxFQxTBhIiOBsAvBpIZvSuPszrOqGSPuTsaMgdT-7iINcfmD2yxXlszvLUS8-74e-ctsI38h-C9sw40AyqulkngdYLsN6tThtB"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent flex flex-col justify-end p-8 md:p-12">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-md text-label-md mb-4 w-fit">Akademik</span>
+<h1 class="text-on-primary font-headline-xl text-headline-xl mb-4 max-w-2xl leading-tight">SMA Nusantara Meraih Peringkat 1 Nasional Olimpiade Sains 2024</h1>
+<p class="text-on-primary/80 font-body-lg text-body-lg mb-6 max-w-3xl line-clamp-2">Pencapaian luar biasa ditorehkan oleh siswa-siswi terbaik kami dalam ajang bergengsi tingkat nasional yang diselenggarakan di Jakarta pekan lalu.</p>
+<div class="flex items-center gap-4">
+<button class="bg-secondary text-on-secondary px-8 py-3 rounded-xl font-label-md text-label-md flex items-center gap-2 hover:opacity-90 transition-all">
+                            Baca Selengkapnya
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<span class="text-on-primary/60 font-body-sm text-body-sm">15 Oktober 2024 • Oleh: Admin Humas</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Area -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Filter & News Grid -->
+<div class="lg:col-span-8">
+<!-- Search & Filter Bar -->
+<div class="flex flex-col md:flex-row gap-4 mb-8">
+<div class="relative flex-grow">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary outline-none text-body-md" placeholder="Cari berita..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+<button class="whitespace-nowrap px-6 py-3 bg-primary text-on-primary rounded-xl font-label-md text-label-md">Semua</button>
+<button class="whitespace-nowrap px-6 py-3 bg-surface-container-high text-on-surface-variant hover:bg-outline-variant rounded-xl font-label-md text-label-md transition-colors">Akademik</button>
+<button class="whitespace-nowrap px-6 py-3 bg-surface-container-high text-on-surface-variant hover:bg-outline-variant rounded-xl font-label-md text-label-md transition-colors">Prestasi</button>
+<button class="whitespace-nowrap px-6 py-3 bg-surface-container-high text-on-surface-variant hover:bg-outline-variant rounded-xl font-label-md text-label-md transition-colors">Kegiatan</button>
+</div>
+</div>
+<!-- Categorized News Grid (Asymmetric) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-12">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm group hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img alt="News 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A high-quality close-up photograph of a library setting with stacks of academic books and a student reading in a soft, blurred background. The lighting is warm and natural, suggesting a focused study environment. The overall aesthetic is professional, scholarly, and clean, featuring soft tonal layers and sharp focus on the book textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvhrgUGnM63LzeNK1ZfPWJq3AWBkAPWn-tTNABkWsqIDB31IKtG3CVqNzesMfktzuBXLtSrShs4EZFLZwWdRtS8dcTzdn_KghNVlwdGmcqAwNNOcekmuR51CZGCiwRV967Z8k-2ywKa0Ef0dysFeyfwHk_Dmw42SWiLuN73adBFrb8sCqmFeqnCEhjPwHeNjeM0IJZ3bsZfgRAddR6A_zRm1sSnz0WnBQ1Lcf6_kZ5c9NvGi5vLsk-l6CxhEgDSoR-z-OLx1vzbzOV"/>
+</div>
+<div class="p-6">
+<span class="text-secondary font-label-md text-label-md mb-2 block uppercase tracking-wider">Kegiatan</span>
+<h3 class="font-headline-sm text-headline-sm mb-3 group-hover:text-secondary transition-colors line-clamp-2">Penerimaan Peserta Didik Baru (PPDB) Tahun Ajaran 2025/2026</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mb-4 line-clamp-2">Pendaftaran calon siswa baru SMA Nusantara kini telah resmi dibuka secara daring melalui portal resmi sekolah.</p>
+<div class="flex justify-between items-center text-outline font-body-sm text-body-sm">
+<span>12 Okt 2024</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 1.2k</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm group hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img alt="News 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A group of diverse high school students collaborating on a technology project in a bright, modern classroom filled with computers and whiteboard drawings. The lighting is bright and high-key, creating a vibrant and energetic atmosphere. The shot is medium-range, focusing on the students' enthusiastic interactions and the advanced learning equipment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOKnvEj4mCFcM-9IV9bPgoevRdgcbIZcIYxZ_7517Pqhp7WuWUwZic6U25Qo18LAW7isRo54aa9JCykvhCk_sucuJg9u6uyfN5qNnosR1C1se5yguU4t_jT6P_m7g3uAWxz5DC-vNpE3B4Jo7EcsbTTH_Hh-2BLi_H2HeCJbGSeI42A4Abr3mTtJGIgQgvMwCzRVSlsC8vvHiiuZeAe5-dC0LasgpWkXClmr05f-xJK5u-3WZXAtc_HBzFM9hbnoVDiBPaI9CGSloq"/>
+</div>
+<div class="p-6">
+<span class="text-secondary font-label-md text-label-md mb-2 block uppercase tracking-wider">Prestasi</span>
+<h3 class="font-headline-sm text-headline-sm mb-3 group-hover:text-secondary transition-colors line-clamp-2">Tim Robotik Nusantara Juara di Ajang Internasional Singapura</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mb-4 line-clamp-2">Inovasi robot pembersih sampah laut karya siswa SMA Nusantara memukau para juri internasional.</p>
+<div class="flex justify-between items-center text-outline font-body-sm text-body-sm">
+<span>10 Okt 2024</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 856</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm group hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img alt="News 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A focused portrait of high school students during a graduation ceremony, wearing traditional academic caps and gowns. The background is softly blurred to emphasize the subjects' expressions of pride and accomplishment. The lighting is elegant and professional, with a dignified and celebratory mood in line with a top-tier educational institution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaoZmj6GJnc_Q7uBS6WpkrN_PRmwvKd9CI6xoWclVlb0-FRNYSiO1E2JGszkcq_g6xIxc3Lx5xExMFzWUFqk4EVYYTn054jU6DGDgRJabyK_j5fxnBTxLAZPO8yJhU8-nroG_6xvOBozsoPt8_vhwUUXVg8s5QLOR-WkPIVhuJYEk2K5YbkUIixaJxPtCQnjLZzNettNxzglZ2NyAuIzdtHsEsFD788MSj6hiFNaQBHa-W8cS3LpMFBAe048RcDav3MteWm0F-CKXH"/>
+</div>
+<div class="p-6">
+<span class="text-secondary font-label-md text-label-md mb-2 block uppercase tracking-wider">Pengumuman</span>
+<h3 class="font-headline-sm text-headline-sm mb-3 group-hover:text-secondary transition-colors line-clamp-2">Jadwal Ujian Tengah Semester Ganjil 2024/2025</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mb-4 line-clamp-2">Diberitahukan kepada seluruh siswa kelas X, XI, dan XII mengenai pelaksanaan UTS yang akan dimulai pekan depan.</p>
+<div class="flex justify-between items-center text-outline font-body-sm text-body-sm">
+<span>08 Okt 2024</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 2.4k</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm group hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img alt="News 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="An wide-angle exterior view of a modern sports complex at a school, featuring a running track and a lush green field under a clear blue sky. The scene is bright and airy, reflecting a healthy and active lifestyle. The design is clean and orderly, emphasizing the excellent facilities of a premium educational academy with a focused, professional style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMTNlhhcsjCAacyvo0oIeiFV-rl3PmwBLuDz8LMN3ejr-9j2NTQKawyU-BXvAYpizSJr_IuWS_3aNk4VeKFreBnHGCXQMgRP44Cf_gl7L99QVBCInU1sKBXq3hWeCohftOqyrp-0l4Xz9tCurostq9DUX090BXNNezamqSnKxem9bKiJdmsOBJWDE8gXT64pQ4JQmnCA2hpWcuwXuVa8ddq5qGP7BqZmZOtKjcekJpNspHUSjOMocmplJwb_YeFF1-85SDfnU8cbUV"/>
+</div>
+<div class="p-6">
+<span class="text-secondary font-label-md text-label-md mb-2 block uppercase tracking-wider">Kegiatan</span>
+<h3 class="font-headline-sm text-headline-sm mb-3 group-hover:text-secondary transition-colors line-clamp-2">Pekan Olahraga Sekolah (POR) Berlangsung Meriah</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mb-4 line-clamp-2">Semangat sportivitas ditunjukkan oleh para atlet perwakilan kelas dalam berbagai cabang olahraga.</p>
+<div class="flex justify-between items-center text-outline font-body-sm text-body-sm">
+<span>05 Okt 2024</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 1.1k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center items-center gap-2 mb-12">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors text-outline">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-on-primary font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors">3</button>
+<span class="px-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors">12</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors text-outline">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Sidebar -->
+<aside class="lg:col-span-4 space-y-8">
+<!-- Berita Populer -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<h3 class="font-headline-sm text-headline-sm mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+                        Berita Populer
+                    </h3>
+<div class="space-y-6">
+<a class="group flex gap-4 items-start" href="#">
+<span class="text-headline-md font-bold text-outline-variant group-hover:text-secondary transition-colors">01</span>
+<div>
+<h4 class="font-body-md text-body-md font-bold group-hover:text-secondary transition-colors mb-1 line-clamp-2">Tips Sukses Menghadapi Ujian Nasional 2025</h4>
+<span class="text-on-surface-variant font-body-sm text-body-sm">5,204 Pembaca</span>
+</div>
+</a>
+<a class="group flex gap-4 items-start" href="#">
+<span class="text-headline-md font-bold text-outline-variant group-hover:text-secondary transition-colors">02</span>
+<div>
+<h4 class="font-body-md text-body-md font-bold group-hover:text-secondary transition-colors mb-1 line-clamp-2">Daftar Ekstrakurikuler Unggulan di SMA Nusantara</h4>
+<span class="text-on-surface-variant font-body-sm text-body-sm">3,892 Pembaca</span>
+</div>
+</a>
+<a class="group flex gap-4 items-start" href="#">
+<span class="text-headline-md font-bold text-outline-variant group-hover:text-secondary transition-colors">03</span>
+<div>
+<h4 class="font-body-md text-body-md font-bold group-hover:text-secondary transition-colors mb-1 line-clamp-2">Kunjungan Industri Siswa Jurusan IPA ke Pabrik Otomotif</h4>
+<span class="text-on-surface-variant font-body-sm text-body-sm">2,115 Pembaca</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Arsip Berita -->
+<div class="bg-primary text-on-primary rounded-xl p-6 shadow-sm">
+<h3 class="font-headline-sm text-headline-sm mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed">calendar_month</span>
+                        Arsip Berita
+                    </h3>
+<div class="space-y-4">
+<button class="w-full flex justify-between items-center py-2 border-b border-on-primary/10 hover:text-secondary-fixed transition-colors">
+<span>Tahun 2024</span>
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+<button class="w-full flex justify-between items-center py-2 border-b border-on-primary/10 hover:text-secondary-fixed transition-colors">
+<span>Tahun 2023</span>
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+<button class="w-full flex justify-between items-center py-2 border-b border-on-primary/10 hover:text-secondary-fixed transition-colors">
+<span>Tahun 2022</span>
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+<div class="mt-8">
+<p class="font-body-sm text-body-sm text-on-primary/60 mb-4">Berlangganan newsletter untuk mendapatkan berita terbaru langsung di email Anda.</p>
+<div class="flex gap-2">
+<input class="w-full px-4 py-2 bg-on-primary/10 border border-on-primary/20 rounded-lg text-body-sm focus:outline-none focus:border-secondary-fixed" placeholder="Email Anda" type="email"/>
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg font-label-md text-label-md">Daftar</button>
+</div>
+</div>
+</div>
+<!-- Iklan / Pengumuman Kecil -->
+<div class="relative rounded-xl overflow-hidden aspect-[4/5] group">
+<img alt="School spirit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="A warm, atmospheric photo of a student group celebrating in a school hallway, with lockers and sunlight streaming through windows in the background. The lighting is soft and golden, capturing a moment of genuine joy and community. The photographic style is professional and lifestyle-oriented, emphasizing the human and social aspects of high school life within a modern academy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOQGXOXdRrxbND_c-WWXxlJZ3n6Wn87jDOLCN4FsrMaXFwzkBPzeqgl3gQfsUGdr9G5GaXe0R3scZ74g0mHK5rquu2yWPHGQgoXBXymcz1_s92ngrncuy76i8pkL9WTFfwwPw6qSk3CxbLO5UVwavNI_8qEWmd0kUtSHeen111jfEie74C6YjE32S1UpR5cqumHljHUTGVPOXbbH9Wza7NergO1HSh-YUcO8sB0cWiW0IKzX3eSoaB9c3WfpHL5B22iiZeuclwi0qq"/>
+<div class="absolute inset-0 bg-primary/40 flex flex-col items-center justify-center p-6 text-center">
+<h4 class="text-on-primary font-headline-md text-headline-md mb-2">Mari Bergabung!</h4>
+<p class="text-on-primary/90 font-body-md text-body-md mb-6">Bersama mencetak generasi cerdas dan berkarakter.</p>
+<button class="px-6 py-2 border-2 border-on-primary text-on-primary rounded-full font-label-md text-label-md hover:bg-on-primary hover:text-primary transition-all">Hubungi Kami</button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-primary">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-max-width mx-auto">
+<div class="md:col-span-1">
+<div class="font-headline-sm text-headline-sm font-bold text-on-primary mb-6">SMA Nusantara</div>
+<p class="text-primary-fixed-dim opacity-80 font-body-sm text-body-sm">Unggul dalam prestasi, santun dalam budi pekerti, dan berwawasan teknologi global.</p>
+</div>
+<div class="md:col-span-1">
+<h4 class="text-on-primary font-bold mb-4">Informasi Kontak</h4>
+<ul class="space-y-2">
+<li class="text-primary-fixed-dim opacity-80 font-body-sm text-body-sm">Alamat: Jl. Pendidikan No. 123</li>
+<li class="text-primary-fixed-dim opacity-80 font-body-sm text-body-sm">Email: info@smanusantara.sch.id</li>
+<li class="text-primary-fixed-dim opacity-80 font-body-sm text-body-sm">Telepon: (021) 555-0123</li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h4 class="text-on-primary font-bold mb-4">Media Sosial</h4>
+<ul class="space-y-2">
+<li><a class="text-primary-fixed-dim opacity-80 font-body-sm text-body-sm hover:text-secondary-fixed-dim transition-colors" href="#">Facebook</a></li>
+<li><a class="text-primary-fixed-dim opacity-80 font-body-sm text-body-sm hover:text-secondary-fixed-dim transition-colors" href="#">Instagram</a></li>
+<li><a class="text-primary-fixed-dim opacity-80 font-body-sm text-body-sm hover:text-secondary-fixed-dim transition-colors" href="#">YouTube</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h4 class="text-on-primary font-bold mb-4">Berita Terbaru</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-on-primary/10 rounded overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Thumbnail of high school students working with robotics tools in a bright, modern lab space, professional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1COFsV5N6IC7tBJvjstKj96KM3hqLa84TXNE70NF6z-QPFUM7ucuCZf_Fk7hYq4LXSaKmzP7vzvagOpasfbFg5NzIsUKwLga0EZ-DhIXg5lqAH2CGBLZinhbslkkNi00CGkRjrqjw0JWin4a917BdKBZqXZwmHRAfKxnnX1qX3XGUL8I_9gGCwO6AQOLelN_fkXUkgXYLeZu8cLk-cwr8F5emUgQm4hmKZHjhVpZiA8eEmVnsd_RlxMjwkcqbVSYS0RlE5aGFTVIg"/>
+</div>
+<a class="text-primary-fixed-dim opacity-80 font-body-sm text-body-sm hover:text-on-primary transition-colors line-clamp-2" href="#">Juara Robotik Internasional Singapura</a>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-on-primary/10 rounded overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Thumbnail of academic books in a school library setting, warm and studious atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD41AM3g3u3Th8NadzWW6ccMZpu_GYrGY2iufSfLXdPAI37YrBqc0BEkABvLoQRYNCCHiLpfrbwh8lNEld5mTTUBJlDvnngUybKIS7l0g_YaslVToNlZE7tZVBRKGIxTgxl5eVoX4cQsQ4NreNmZV_Jw8kDkv9i9NUroN2E_FWq7S27jPTvIivppvVBMc2BXBzw7LG3a_WF4_7wcZ5if11CN85ST4fumo7peARGxXfx6meQl-4EyQQ1zt538YLAyyHyTQAHWrI-A6pe"/>
+</div>
+<a class="text-primary-fixed-dim opacity-80 font-body-sm text-body-sm hover:text-on-primary transition-colors line-clamp-2" href="#">Pembukaan PPDB TA 2025/2026</a>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-on-primary/10 py-6 text-center">
+<p class="text-primary-fixed-dim opacity-80 font-body-sm text-body-sm">© 2024 SMA Nusantara. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions and effects
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+                let ripple = document.createElement('span');
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                // Add ripple effect logic here if needed
+            });
+        });
+
+        // Simple scroll reveal
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,264 @@
+================================================================================
+                      RINGKASAN FITUR EduPortal
+                 SMA Nusantara — Sistem Informasi Sekolah
+================================================================================
+
+A. FITUR YANG SUDAH ADA
+================================================================================
+
+--------------------------------------------------------------------------------
+A.1. HALAMAN PUBLIK (tanpa login)
+--------------------------------------------------------------------------------
+  [x] Beranda (home) — hero, stats counter, berita terbaru
+  [x] Profil Sekolah — visi/misi, struktur organisasi, fasilitas
+  [x] Akademik — program, guru, prestasi, galeri
+  [x] Berita — list + detail (slug-based)
+  [x] Alumni — tracer study form (rate-limited)
+  [x] Kontak — form kirim pesan + info sekolah (rate-limited)
+  [x] Auth — login, register, forgot/reset password, verify email
+
+--------------------------------------------------------------------------------
+A.2. PORTAL ADMIN — /admin (role: admin)
+--------------------------------------------------------------------------------
+  A.2.1. Dashboard
+    [x] Statistik: total siswa, guru, kelas
+    [x] Widget: siswa baru, ujian berlangsung, SPP terbaru, pengumuman
+    [x] Shortcut menu (12 kartu)
+
+  A.2.2. Data Master (CRUD + soft delete + bulk action)
+    [x] Data Siswa — CRUD, import CSV, bulk delete/restore, trash filter, export CSV
+    [x] Data Guru — CRUD, import CSV, bulk delete/restore, trash filter
+    [x] Kelas — CRUD, pilih wali kelas + jurusan
+    [x] Jurusan — CRUD
+    [x] Mata Pelajaran — CRUD
+
+  A.2.3. Akademik (CRUD)
+    [x] Jadwal Akademik — CRUD per hari/jam/ruang
+    [x] Nilai — CRUD per siswa
+    [x] Absensi — CRUD per siswa (hadir/sakit/ijin/alpha)
+    [x] Bank Soal — CRUD, import JSON, bulk delete/restore, trash filter
+    [x] Ujian Online — CRUD, atur kelas peserta
+
+  A.2.4. Konten (CRUD)
+    [x] Berita — CRUD + Quill editor + upload gambar + bulk delete/restore
+    [x] Pengumuman — CRUD + kirim notifikasi ke semua user
+    [x] Prestasi — CRUD
+
+  A.2.5. Manajemen
+    [x] Ekstrakurikuler — CRUD + kelola anggota per ekskul
+    [x] Kalender Akademik — CRUD semester + event
+    [x] Keuangan (SPP) — CRUD pembayaran per siswa
+    [x] Notifikasi — lihat + tandai dibaca + tandai semua dibaca
+
+  A.2.6. Lainnya
+    [x] Pesan Masuk (Kontak) — lihat + tandai dibaca + hapus
+    [x] Tracer Study — lihat + hapus data tracer
+    [x] Aktivitas Sistem — log aktivitas (read-only)
+    [x] Pengaturan Website — setting sekolah (22+ konfigurasi)
+    [x] Pengaturan Admin — profil (nama/email/foto) + ganti password + hapus akun
+
+  A.2.7. Export
+    [x] Export CSV — Siswa, Nilai, Absensi (via job queue)
+
+--------------------------------------------------------------------------------
+A.3. PORTAL GURU — /portal-guru (role: guru)
+--------------------------------------------------------------------------------
+  [x] Dashboard — jadwal hari ini, perbandingan nilai, tugas aktif, agenda
+  [x] Jadwal Pelajaran — lihat jadwal mengajar
+  [x] Nilai — input nilai per kelas + mapel
+  [x] Absensi — input absensi bulk per kelas
+  [x] Tugas — CRUD + lihat submission + beri nilai
+  [x] Ujian Online — CRUD (dibatasi mapel sendiri)
+  [x] Bank Soal — CRUD + import JSON + download template (dibatasi mapel)
+  [x] Cetak Rapor — lihat daftar siswa + print PDF per siswa
+  [x] Wali Kelas — lihat daftar siswa + statistik per kelas
+  [x] Modul Ajar — upload/download/hapus file modul
+  [x] Perpustakaan — CRUD buku
+  [x] Pesan — internal chat (conversation-based)
+  [x] Profil — lihat/edit profil + ganti password
+
+--------------------------------------------------------------------------------
+A.4. PORTAL SISWA — /portal-siswa (role: siswa)
+--------------------------------------------------------------------------------
+  [x] Dashboard — jadwal, nilai terbaru, pengumuman
+  [x] Jadwal Pelajaran — lihat jadwal kelas sendiri
+  [x] Nilai — lihat nilai per semester
+  [x] Absensi — lihat riwayat absensi (filter bulan)
+  [x] Tugas — lihat tugas + submit file
+  [x] Ujian Online — lihat daftar ujian + kerjakan + lihat hasil
+  [x] Modul Ajar — lihat + download modul
+  [x] Ekstrakurikuler — lihat + join/leave ekskul
+  [x] Perpustakaan — lihat buku + riwayat peminjaman
+  [x] Pesan — internal chat (conversation-based)
+  [x] Profil — lihat/edit profil + ganti password
+  [x] SPP — riwayat pembayaran + download invoice PDF
+
+--------------------------------------------------------------------------------
+A.5. FITUR LINTAS PORTAL
+--------------------------------------------------------------------------------
+  [x] Role-based redirect setelah login (CheckRole middleware)
+  [x] Ujian Online — kerjakan + submit + lihat hasil
+  [x] Profile — edit profil (nama/email) + ganti password + hapus akun
+  [x] Dark Mode — toggle via localStorage
+  [x] Notifikasi database — TugasBaru + Pengumuman
+  [x] API v1 (read-only) — siswa, nilai, jadwal (role-filtered)
+  [x] Scheduled tasks — auto-expire ujian, generate SPP bulanan, session cleanup
+  [x] Authorization — model policies (Tugas, Soal, Ujian)
+  [x] SweetAlert2 — semua alert + konfirmasi + flash message
+
+--------------------------------------------------------------------------------
+A.6. TEKNIS
+--------------------------------------------------------------------------------
+  [x] Database SQLite (dengan index optimasi)
+  [x] Queue — database driver (job: import, export)
+  [x] Cache — database driver (setting, daftar mapel)
+  [x] Soft Delete — Siswa, Guru, Soal, Berita
+  [x] Job queue — ImportSiswa, ImportSoal, ExportData
+  [x] Migrations — 37 file (skema lengkap)
+  [x] Seeder — demo dataset (admin + 3 guru + 5 siswa + data pendukung)
+  [x] Factory — 5 model factories
+  [x] Code splitting — GSAP (public only), Quill (lazy load)
+  [x] Loading screen — hide on DOMContentLoaded
+
+
+B. FITUR YANG PERLU PERBAIKAN
+================================================================================
+
+--------------------------------------------------------------------------------
+B.1. BUG / MASALAH
+--------------------------------------------------------------------------------
+  [ ] Test AdminCrudTest — delete siswa/guru gagal karena soft delete
+      (test expecting hard delete, controller soft-deletes user)
+  [ ] Tidak ada pengecekan konflik jadwal (ruang/guru double-booked)
+  [ ] Cache key "daftar_mapel" masih pake all() — ambil semua kolom
+  [ ] PengumumanController pake User::all() — load semua user ke memory
+      (seharusnya chunked query atau queue batch)
+
+--------------------------------------------------------------------------------
+B.2. FITUR SETENGAH JADI / KURANG LENGKAP
+--------------------------------------------------------------------------------
+  [ ] Pengaturan Admin — hapus tab Notifikasi & Preferensi Tampilan
+  [ ] Activity Log — mungkin belum capture semua event (belum ada observer/listener)
+  [ ] Tugas Submission — tidak ada notifikasi ke guru saat siswa submit
+  [ ] Confirm password modal (Breeze default) — masih pakai Breeze lama,
+      belum di-switch ke SweetAlert2
+  [ ] Delete Account modal — masih pakai Breeze modal, belum SweetAlert2
+
+--------------------------------------------------------------------------------
+B.3. PERFORMA (SUDAH DIPERBAIKI SEBAGIAN)
+--------------------------------------------------------------------------------
+  [i] N+1 queries — UjianOnlineController (siswa+guru), GuruDashboardController
+      → SUDAH DIPERBAIKI
+  [i] Loading screen — window.load → DOMContentLoaded → SUDAH DIPERBAIKI
+  [i] Lazy loading gambar — SUDAH DITAMBAH ke 12 gambar eksternal
+  [i] preconnect fonts.gstatic.com — SUDAH DITAMBAH ke 6 layout
+  [i] Code splitting GSAP (130KB) — SUDAH, hanya di public pages
+  [i] Code splitting Quill (~100KB) — SUDAH, dynamic import
+  [i] Trix CSS (18KB) — SUDAH DIHAPUS (tidak dipakai)
+  [ ] Dashboard aggregation queries — belum di-cache
+  [ ] ``preventLazyLoading()`` — belum diaktifkan di AppServiceProvider
+
+--------------------------------------------------------------------------------
+B.4. UI/UX
+--------------------------------------------------------------------------------
+  [ ] Portal guru & siswa — perbaiki warna hover, text, input, dan lain lain yang belum support dark mode
+  [ ] Halaman "Wali Kelas" di portal guru — belum punya fitur komunikasi
+      massal (kirim pesan ke semua siswa/wali)
+  [ ] Select All checkbox — sudah diperbaiki di admin, tapi mungkin perlu
+      dicek di semua tabel
+  [ ] Import siswa — belum ada validasi preview sebelum import
+  [ ] Export — belum ada progress indicator untuk job-based export
+
+
+C. FITUR BARU YANG BISA DITAMBAHKAN
+================================================================================
+
+--------------------------------------------------------------------------------
+C.1. SISTEM PEMBAYARAN
+--------------------------------------------------------------------------------
+  [ ] Integrasi payment gateway (Midtrans) untuk SPP online
+  [ ] Riwayat pembayaran dan invoice otomatis via email
+  [ ] Konfirmasi pembayaran otomatis
+  [ ] Tagihan otomatis + reminder
+
+--------------------------------------------------------------------------------
+C.2. KOMUNIKASI & NOTIFIKASI
+--------------------------------------------------------------------------------
+  [ ] Email notification channel (selain database)
+  [ ] WhatsApp notification (via Fonnte/WaApi)
+  [ ] Real-time chat (WebSocket/Pusher) — pesan jadi instant
+  [ ] Broadcast message ke orang tua/wali
+  [ ] Notifikasi push ke browser (web push API)
+
+--------------------------------------------------------------------------------
+C.3. AKADEMIK
+--------------------------------------------------------------------------------
+  [ ] Manajemen Kurikulum (KI/KD, silabus, prota, promes)
+  [ ] Generasi rapor otomatis (desimal → huruf, deskripsi)
+  [ ] Deteksi konflik jadwal (guru, ruang, kelas)
+  [ ] Presensi guru (check-in/check-out via QR code)
+  [ ] Legger nilai — rekap nilai per kelas per semester
+  [ ] Remedial & pengayaan
+  [ ] Jadwal Piket guru
+
+--------------------------------------------------------------------------------
+C.4. PERPUSTAKAAN
+--------------------------------------------------------------------------------
+  [ ] Peminjaman buku oleh siswa (online request)
+  [ ] Denda keterlambatan pengembalian
+  [ ] Barcode/QR code untuk buku
+  [ ] Katalog online dengan search + kategori
+
+--------------------------------------------------------------------------------
+C.5. KESISWAAN
+--------------------------------------------------------------------------------
+  [ ] Izin siswa (online — orang tua bisa ajukan via form)
+  [ ] Pelanggaran siswa (buku kasus, poin, sanksi)
+  [ ] Mutasi siswa (masuk/keluar/pindah)
+  [ ] Beasiswa & prestasi non-akademik
+  [ ] Bimbingan Konseling (BK) — jadwal konseling, catatan
+
+--------------------------------------------------------------------------------
+C.6. KEPEGAWAIAN (GURU & STAFF)
+--------------------------------------------------------------------------------
+  [ ] Data kepegawaian (PNS/Non-PNS, golongan, jabatan)
+  [ ] Cuti & izin guru
+  [ ] Kinerja guru (PKG, jam mengajar)
+  [ ] Sertifikasi & tunjangan
+
+--------------------------------------------------------------------------------
+C.7. ASET & INVENTARIS
+--------------------------------------------------------------------------------
+  [ ] Manajemen aset sekolah (ruang, barang, inventaris)
+  [ ] Peminjaman ruang & alat
+  [ ] Maintenance & perbaikan
+
+--------------------------------------------------------------------------------
+C.8. PPDB (PENERIMAAN PESERTA DIDIK BARU)
+--------------------------------------------------------------------------------
+  [ ] Form pendaftaran online
+  [ ] Upload dokumen (ijazah, KK, akta, dan lain lain)
+  [ ] Verifikasi berkas
+  [ ] Pengumuman hasil seleksi
+
+--------------------------------------------------------------------------------
+C.9. LAPORAN & ANALITIK
+--------------------------------------------------------------------------------
+  [ ] Grafik & chart (Chart.js atau ApexCharts)
+  [ ] Export PDF untuk semua modul (tidak cuma rapor & invoice)
+  [ ] Cetak Jadwal Pelajaran (PDF)
+
+--------------------------------------------------------------------------------
+C.10. TEKNIS & KEAMANAN
+--------------------------------------------------------------------------------
+  [ ] Role orang tua (view nilai, absensi, SPP anak)
+  [ ] Backup database
+  [ ] File manager untuk gambar/dokumen
+  [ ] REST API yang lebih lengkap (write endpoint juga)
+  [ ] PWA hanya untuk portal admin, guru, dan siswa saja tanpa halaman website dan halaman publik lain nya
+  [ ] login dengan fitur biometric (finger print / face id)
+
+
+================================================================================
+                           END OF RINGKASAN
+================================================================================
