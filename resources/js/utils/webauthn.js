@@ -54,6 +54,9 @@ export async function registerBiometric(email, credentialName) {
         id: base64ToArrayBuffer(c.id),
     }));
 
+    options.residentKey = 'preferred';
+    options.authenticatorSelection = { residentKey: 'preferred' };
+
     const cred = await navigator.credentials.create({ publicKey: options });
 
     const credential = {
@@ -93,13 +96,19 @@ export async function loginBiometric() {
     }
     const options = await res.json();
 
-    const assertion = await navigator.credentials.get({
-        publicKey: {
-            challenge: base64ToArrayBuffer(options.challenge),
-            timeout: options.timeout ?? 60000,
-            rpId: options.rp?.id || window.location.hostname,
-        },
-    });
+    var getOptions = {
+        challenge: base64ToArrayBuffer(options.challenge),
+        timeout: options.timeout ?? 60000,
+        rpId: options.rp?.id || window.location.hostname,
+    };
+
+    if (options.allowCredentials && options.allowCredentials.length > 0) {
+        getOptions.allowCredentials = options.allowCredentials.map(function(c) {
+            return { id: base64ToArrayBuffer(c.id), type: c.type };
+        });
+    }
+
+    const assertion = await navigator.credentials.get({ publicKey: getOptions });
 
     const credential = {
         credential_id: arrayBufferToBase64Url(assertion.rawId),

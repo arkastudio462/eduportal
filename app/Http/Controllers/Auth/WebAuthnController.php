@@ -29,8 +29,6 @@ class WebAuthnController extends Controller
                 ['type' => 'public-key', 'alg' => -257],
             ],
             'timeout' => 60000,
-            'attestation' => 'none',
-            'excludeCredentials' => [],
         ];
 
         if ($request->has('email')) {
@@ -54,6 +52,17 @@ class WebAuthnController extends Controller
                 'name' => $user->email,
                 'displayName' => $user->name,
             ];
+        } else {
+            $allCredentials = WebAuthnCredential::query()
+                ->select('credential_id')
+                ->get()
+                ->map(fn ($c) => [
+                    'id' => $c->credential_id,
+                    'type' => 'public-key',
+                ])
+                ->toArray();
+
+            $response['allowCredentials'] = $allCredentials;
         }
 
         return response()->json($response);
