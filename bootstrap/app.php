@@ -18,10 +18,6 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->trustProxies(at: '*');
-
-        $middleware->validateCsrfTokens(except: [
-            'webauthn/*',
-        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

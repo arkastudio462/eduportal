@@ -580,9 +580,12 @@ Route::post('/api/broadcasting/auth', function (Request $request) {
     return Broadcast::auth($request);
 })->middleware('auth');
 
-Route::post('/webauthn/challenge', [\App\Http\Controllers\Auth\WebAuthnController::class, 'challenge']);
-Route::post('/webauthn/register', [\App\Http\Controllers\Auth\WebAuthnController::class, 'register']);
-Route::post('/webauthn/authenticate', [\App\Http\Controllers\Auth\WebAuthnController::class, 'authenticate']);
+Route::post('/webauthn/challenge', [\App\Http\Controllers\Auth\WebAuthnController::class, 'challenge'])
+    ->withoutMiddleware(\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class);
+Route::post('/webauthn/register', [\App\Http\Controllers\Auth\WebAuthnController::class, 'register'])
+    ->withoutMiddleware(\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class);
+Route::post('/webauthn/authenticate', [\App\Http\Controllers\Auth\WebAuthnController::class, 'authenticate'])
+    ->withoutMiddleware(\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/webauthn/credentials', [\App\Http\Controllers\Auth\WebAuthnController::class, 'credentials']);

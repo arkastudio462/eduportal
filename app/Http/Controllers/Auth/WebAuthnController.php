@@ -8,6 +8,7 @@ use App\Models\WebAuthnCredential;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class WebAuthnController extends Controller
@@ -84,45 +85,53 @@ class WebAuthnController extends Controller
 
     public function authenticate(Request $request): JsonResponse
     {
-        $request->validate([
-            'credential_id' => 'required|string',
-            'signature' => 'required|string',
-            'authenticator_data' => 'required|string',
-            'client_data_json' => 'required|string',
-        ]);
+        try {
+            $request->validate([
+                'credential_id' => 'required|string',
+                'signature' => 'required|string',
+                'authenticator_data' => 'required|string',
+                'client_data_json' => 'required|string',
+            ]);
 
-        $challenge = Session::get('webauthn_challenge');
-        if (!$challenge) {
-            return response()->json(['message' => 'Session expired. Please refresh and try again.'], 400);
+            $challenge = Session::get('webauthn_challenge');
+            if (!$challenge) {
+                return response()->json(['message' => 'Session expired. Please refresh and try again.'], 400);
+            }
+
+            $credential = WebAuthnCredential::where('credential_id', $request->credential_id)->first();
+            if (!$credential) {
+                return response()->json(['message' => 'Credential not found'], 404);
+            }
+
+            $user = $credential->user;
+            if (!$user) {
+                return response()->json(['message' => 'User not found'], 404);
+            }
+
+            Auth::login($user, true);
+            $request->session()->regenerate();
+
+            Session::forget(['webauthn_challenge', 'webauthn_email']);
+
+            $role = $user->role;
+            $redirect = match ((string) $role) {
+                'admin' => route('admin.dashboard', absolute: false),
+                'guru' => route('portal-guru.dashboard', absolute: false),
+                'siswa' => route('portal-siswa.dashboard', absolute: false),
+                default => route('dashboard', absolute: false),
+            };
+
+            return response()->json([
+                'message' => 'Login successful',
+                'redirect' => $redirect,
+            ]);
+        } catch (\Throwable $e) {
+            Log::error('WebAuthn authenticate error: ' . $e->getMessage(), [
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+            ]);
+            return response()->json(['message' => 'Server error: ' . $e->getMessage()], 500);
         }
-
-        $credential = WebAuthnCredential::where('credential_id', $request->credential_id)->first();
-        if (!$credential) {
-            return response()->json(['message' => 'Credential not found'], 404);
-        }
-
-        $user = $credential->user;
-        if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
-        }
-
-        Auth::login($user, true);
-        $request->session()->regenerate();
-
-        Session::forget(['webauthn_challenge', 'webauthn_email']);
-
-        $role = $user->role;
-        $redirect = match ((string) $role) {
-            'admin' => route('admin.dashboard', absolute: false),
-            'guru' => route('portal-guru.dashboard', absolute: false),
-            'siswa' => route('portal-siswa.dashboard', absolute: false),
-            default => route('dashboard', absolute: false),
-        };
-
-        return response()->json([
-            'message' => 'Login successful',
-            'redirect' => $redirect,
-        ]);
     }
 
     public function credentials(Request $request): JsonResponse
