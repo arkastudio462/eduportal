@@ -2,11 +2,11 @@
     "$schema": "https://railway.app/railway.schema.json",
     "build": {
         "builder": "NIXPACKS",
-        "buildCommand": "composer install --no-interaction --optimize-autoloader && npm ci && npm run build && php artisan storage:link"
+        "buildCommand": "composer install --no-interaction --optimize-autoloader && npm install && npm run build && php artisan storage:link"
     },
     "deploy": {
-        "startCommand": "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT && php artisan queue:work --tries=3 && php artisan storage:link --force",
-        "healthcheckPath": "/up",
+        "startCommand": "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT",
+        "healthcheckPath": "/",
         "restartPolicyType": "ON_FAILURE"
     }
 }
