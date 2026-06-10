@@ -2,10 +2,10 @@
     "$schema": "https://railway.app/railway.schema.json",
     "build": {
         "builder": "NIXPACKS",
-        "buildCommand": "composer install --no-interaction --optimize-autoloader && npm install && npm run build && php artisan storage:link"
+        "buildCommand": "composer install --no-interaction --optimize-autoloader && npm install && npm run build && php artisan storage:link && php artisan migrate --force && php artisan db:seed --force"
     },
     "deploy": {
-        "startCommand": "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT",
+        "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT",
         "healthcheckPath": "/",
         "restartPolicyType": "ON_FAILURE"
     }
