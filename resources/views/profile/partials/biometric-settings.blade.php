@@ -84,9 +84,7 @@ function biometricManager() {
                 if (!window.WebAuthn) {
                     throw new Error('Fitur biometric tidak didukung di browser ini');
                 }
-                const name = prompt('Nama perangkat (contoh: iPhone 15, Laptop Lenovo):');
-                if (!name) return;
-                await window.WebAuthn.registerBiometric(email, name);
+                await window.WebAuthn.registerBiometric(email);
                 alert('Biometric berhasil didaftarkan!');
                 await this.loadCredentials();
             } catch (e) {

@@ -28,6 +28,34 @@ function arrayBufferToBase64Url(buffer) {
     return base64ToBase64Url(btoa(binary));
 }
 
+function getDeviceName() {
+    var ua = navigator.userAgent;
+    if (/iPhone/.test(ua)) {
+        var match = ua.match(/iPhone OS (\d+[_\d]*)/);
+        var ver = match ? 'iOS ' + match[1].replace(/_/g, '.') : '';
+        return 'iPhone' + (ver ? ' (' + ver + ')' : '');
+    }
+    if (/iPad/.test(ua)) return 'iPad';
+    if (/Android/.test(ua)) {
+        var m = ua.match(/Android ([\d.]+)/);
+        var ver = m ? m[1] : '';
+        var device = ua.match(/\(.*?; (.+?) Build/);
+        var name = device ? device[1] : 'Android';
+        return name + (ver ? ' (' + ver + ')' : '');
+    }
+    if (/Mac OS X/.test(ua)) {
+        var m = ua.match(/Mac OS X ([\d_]+)/);
+        return 'Mac' + (m ? ' (' + m[1].replace(/_/g, '.') + ')' : '');
+    }
+    if (/Windows/.test(ua)) {
+        var m = ua.match(/Windows NT ([\d.]+)/);
+        return 'Windows' + (m ? ' (' + m[1] + ')' : '');
+    }
+    if (/Linux/.test(ua)) return 'Linux';
+    if (/CrOS/.test(ua)) return 'Chromebook';
+    return 'Perangkat Ini';
+}
+
 export async function getRegisterChallenge(email) {
     const res = await fetch('/webauthn/challenge', {
         method: 'POST',
@@ -44,7 +72,7 @@ export async function getRegisterChallenge(email) {
     return res.json();
 }
 
-export async function registerBiometric(email, credentialName) {
+export async function registerBiometric(email) {
     const options = await getRegisterChallenge(email);
 
     options.challenge = base64ToArrayBuffer(options.challenge);
@@ -62,7 +90,7 @@ export async function registerBiometric(email, credentialName) {
     const credential = {
         credential_id: arrayBufferToBase64Url(cred.rawId),
         public_key: arrayBufferToBase64Url(cred.response.getPublicKey()?.buffer || cred.response.attestationObject),
-        name: credentialName || null,
+        name: getDeviceName(),
     };
 
     const res = await fetch('/webauthn/register', {
@@ -96,19 +124,13 @@ export async function loginBiometric() {
     }
     const options = await res.json();
 
-    var getOptions = {
-        challenge: base64ToArrayBuffer(options.challenge),
-        timeout: options.timeout ?? 60000,
-        rpId: options.rp?.id || window.location.hostname,
-    };
-
-    if (options.allowCredentials && options.allowCredentials.length > 0) {
-        getOptions.allowCredentials = options.allowCredentials.map(function(c) {
-            return { id: base64ToArrayBuffer(c.id), type: c.type };
-        });
-    }
-
-    const assertion = await navigator.credentials.get({ publicKey: getOptions });
+    const assertion = await navigator.credentials.get({
+        publicKey: {
+            challenge: base64ToArrayBuffer(options.challenge),
+            timeout: options.timeout ?? 60000,
+            rpId: options.rp?.id || window.location.hostname,
+        },
+    });
 
     const credential = {
         credential_id: arrayBufferToBase64Url(assertion.rawId),
