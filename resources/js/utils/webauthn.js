@@ -79,6 +79,48 @@ export async function registerBiometric(email, credentialName) {
     return res.json();
 }
 
+export async function loginBiometric() {
+    const res = await fetch('/webauthn/challenge', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
+        },
+    });
+    if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.message || 'Failed to get challenge');
+    }
+    const options = await res.json();
+
+    options.challenge = base64ToArrayBuffer(options.challenge);
+
+    const assertion = await navigator.credentials.get({ publicKey: options });
+
+    const credential = {
+        credential_id: arrayBufferToBase64Url(assertion.rawId),
+        signature: arrayBufferToBase64Url(assertion.response.signature),
+        authenticator_data: arrayBufferToBase64Url(assertion.response.authenticatorData),
+        client_data_json: arrayBufferToBase64Url(assertion.response.clientDataJSON),
+    };
+
+    const authRes = await fetch('/webauthn/authenticate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
+        },
+        body: JSON.stringify(credential),
+    });
+
+    if (!authRes.ok) {
+        const err = await authRes.json();
+        throw new Error(err.message || 'Authentication failed');
+    }
+
+    return authRes.json();
+}
+
 export async function authenticateBiometric(email) {
     const options = await getRegisterChallenge(email);
 

@@ -108,19 +108,11 @@
             }
 
             btn.addEventListener('click', async function() {
-                var email = document.getElementById('email')?.value;
-                if (!email) {
-                    if (typeof Swal !== 'undefined') {
-                        Swal.fire({ icon: 'warning', title: 'Masukkan email terlebih dahulu', timer: 2000, showConfirmButton: false });
-                    }
-                    return;
-                }
-
                 btn.disabled = true;
                 btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span> Memverifikasi...';
 
                 try {
-                    var result = await window.WebAuthn.authenticateBiometric(email);
+                    var result = await window.WebAuthn.loginBiometric();
                     if (typeof Swal !== 'undefined') {
                         Swal.fire({ icon: 'success', title: 'Login berhasil', timer: 1500, showConfirmButton: false });
                     }

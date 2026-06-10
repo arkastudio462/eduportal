@@ -15,33 +15,14 @@ class WebAuthnController extends Controller
 {
     public function challenge(Request $request): JsonResponse
     {
-        $request->validate(['email' => 'required|email']);
-
-        $user = User::where('email', $request->email)->first();
-        if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
-        }
-
         $challenge = bin2hex(random_bytes(32));
         Session::put('webauthn_challenge', $challenge);
-        Session::put('webauthn_email', $request->email);
 
-        $credentials = $user->webAuthnCredentials;
-        $allowCredentials = $credentials->map(fn ($c) => [
-            'id' => $c->credential_id,
-            'type' => 'public-key',
-        ]);
-
-        return response()->json([
+        $response = [
             'challenge' => $challenge,
             'rp' => [
                 'name' => 'EduPortal SMA Nusantara',
                 'id' => $request->getHost(),
-            ],
-            'user' => [
-                'id' => base64_encode($user->id),
-                'name' => $user->email,
-                'displayName' => $user->name,
             ],
             'pubKeyCredParams' => [
                 ['type' => 'public-key', 'alg' => -7],
@@ -49,8 +30,33 @@ class WebAuthnController extends Controller
             ],
             'timeout' => 60000,
             'attestation' => 'none',
-            'excludeCredentials' => $allowCredentials->toArray(),
-        ]);
+            'excludeCredentials' => [],
+        ];
+
+        if ($request->has('email')) {
+            $request->validate(['email' => 'required|email']);
+
+            $user = User::where('email', $request->email)->first();
+            if (!$user) {
+                return response()->json(['message' => 'User not found'], 404);
+            }
+
+            Session::put('webauthn_email', $request->email);
+
+            $credentials = $user->webAuthnCredentials;
+            $response['excludeCredentials'] = $credentials->map(fn ($c) => [
+                'id' => $c->credential_id,
+                'type' => 'public-key',
+            ])->toArray();
+
+            $response['user'] = [
+                'id' => base64_encode($user->id),
+                'name' => $user->email,
+                'displayName' => $user->name,
+            ];
+        }
+
+        return response()->json($response);
     }
 
     public function register(Request $request): JsonResponse

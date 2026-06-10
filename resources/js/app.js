@@ -11,8 +11,8 @@ window.Chart = Chart;
 
 import './utils/admin-nav';
 import './utils/password-toggle';
-import { isWebAuthnSupported, registerBiometric, authenticateBiometric } from './utils/webauthn';
-window.WebAuthn = { isWebAuthnSupported, registerBiometric, authenticateBiometric };
+import { isWebAuthnSupported, registerBiometric, authenticateBiometric, loginBiometric } from './utils/webauthn';
+window.WebAuthn = { isWebAuthnSupported, registerBiometric, authenticateBiometric, loginBiometric };
 
 window.Alpine = Alpine;
 
