@@ -82,8 +82,10 @@ export async function registerBiometric(email) {
         id: base64ToArrayBuffer(c.id),
     }));
 
-    options.residentKey = 'preferred';
-    options.authenticatorSelection = { residentKey: 'preferred' };
+    options.authenticatorSelection = {
+        residentKey: 'preferred',
+        authenticatorAttachment: 'platform',
+    };
 
     const cred = await navigator.credentials.create({ publicKey: options });
 
